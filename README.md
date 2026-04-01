@@ -4,7 +4,7 @@ Sample project demonstrating how to pass a database transaction from a **parent*
 
 Both classic **Entity Framework 6** and **Entity Framework Core** are covered, each in its own project.
 
-Created as a reference for the Stack Overflow topic:
+Created as an answer to the Stack Overflow question:
 [EF6 connection management](https://learn.microsoft.com/en-us/ef/ef6/fundamentals/connection-management)
 
 ---
@@ -72,10 +72,6 @@ public DatabaseContext(string connectionString) : base(connectionString) { }
 public DatabaseContext(DbConnection dbConnection, bool contextOwnsConnection)
     : base(dbConnection, contextOwnsConnection) { }
 ```
-
-### Related resources
-
-- [Connection management – EF6](https://learn.microsoft.com/en-us/ef/ef6/fundamentals/connection-management)
 
 ---
 
@@ -163,6 +159,13 @@ public DatabaseContext(DbContextOptions options) : base(options) { }
 | Enlist in transaction | `UseTransaction(transaction.UnderlyingTransaction)` | `UseTransactionAsync(transaction.GetDbTransaction())` |
 | Commit | `transaction.Commit()` | `await transaction.CommitAsync()` |
 | Rollback | `transaction.Rollback()` | `await transaction.RollbackAsync()` |
+
+---
+
+## Additional Resources
+
+- [Connection management – EF6](https://learn.microsoft.com/en-us/ef/ef6/fundamentals/connection-management)
+- [Transactions in EF Core](https://learn.microsoft.com/en-us/ef/core/saving/transactions)
 
 ---
 
